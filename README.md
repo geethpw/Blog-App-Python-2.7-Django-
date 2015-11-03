@@ -1,4 +1,3 @@
-# Blog-App-Python-2.7-Django-
-A Responsive Blog built on Python 2.7
+# MEBLOG
+A Responsive Blog built on Python 2.7/Django
 
-Blog with authentication and authorization
