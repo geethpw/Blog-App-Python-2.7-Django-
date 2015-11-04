@@ -5,10 +5,17 @@
         <h2>
             <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
             {% if user.is_authenticated %}
-                <a class="btn btn-default" href="{% url "post_edit" pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                {% if post.published_date %}
+                    <p> Published
+                    </p>
+                {% else %}
+                    <a class="btn btn-default" href="{% url 'meblog.views.post_publish' pk=post.pk %}">Publish</a>
+                {% endif %}
+                <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
             {% endif %}
         </h2>
-        {% if post.published_date %}<p><span class="glyphicon glyphicon-time"></span> {{ post.published_date }}</p>{% endif %}
+        
             <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                 <hr>
                 <p>{{ post.text|linebreaks }}</p>
