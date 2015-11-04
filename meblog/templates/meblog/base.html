@@ -60,6 +60,11 @@
                     <li>
                         <a href="#">Contact</a>
                     </li>
+                    {% if user.is_authenticated %}
+                    <li>
+                        <a href="{% url "post_new" %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

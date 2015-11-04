@@ -5,14 +5,10 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
-                <h1 class="page-header">
-                    Latest Blogs
-                    <small></small>
-                </h1>
                 <!-- First Blog Post -->
                 {% for post in posts %}
                     <h2>
-                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+                        <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>                        
                     </h2>
                     <p><span class="glyphicon glyphicon-time"></span> {{ post.published_date }}</p>
                         <img class="img-responsive" src="http://placehold.it/900x300" alt="">
