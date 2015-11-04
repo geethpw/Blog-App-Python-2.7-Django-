@@ -5,8 +5,8 @@
 Staging database is attached for testing purposes.
 
 ### Super User Details
-username : admin
-password : password
+<b>username :</b> admin <br>
+<b>password :</b> password
 
 ## Features
 - login/logout
