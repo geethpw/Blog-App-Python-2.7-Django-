@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 03, 2015 at 10:54 AM
+-- Generation Time: Nov 04, 2015 at 10:57 AM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -103,14 +103,15 @@ CREATE TABLE IF NOT EXISTS `auth_user` (
   `is_staff` tinyint(1) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `date_joined` datetime(6) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `auth_user`
 --
 
 INSERT INTO `auth_user` (`id`, `password`, `last_login`, `is_superuser`, `username`, `first_name`, `last_name`, `email`, `is_staff`, `is_active`, `date_joined`) VALUES
-(1, 'pbkdf2_sha256$20000$vaOFxJDSTa36$sCAZWKcyOAcNsXoKy7ik3X2coiWJ8f19c3p9BF1dze0=', '2015-11-03 07:39:50.020000', 1, 'admin', '', '', 'admin@domain.com', 1, 1, '2015-11-03 07:39:41.356000');
+(1, 'pbkdf2_sha256$20000$vaOFxJDSTa36$sCAZWKcyOAcNsXoKy7ik3X2coiWJ8f19c3p9BF1dze0=', '2015-11-04 09:48:44.081000', 1, 'admin', '', '', 'admin@domain.com', 1, 1, '2015-11-03 07:39:41.356000'),
+(2, 'pbkdf2_sha256$20000$QnHDecX11Pb7$duxXXeDpJ6nhfUADKAHZkkCpCojk4C2QC7hsMlhyylo=', NULL, 0, 'test', '', '', 'test@test.com', 0, 1, '2015-11-04 07:40:17.000000');
 
 -- --------------------------------------------------------
 
@@ -134,7 +135,15 @@ CREATE TABLE IF NOT EXISTS `auth_user_user_permissions` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `permission_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `auth_user_user_permissions`
+--
+
+INSERT INTO `auth_user_user_permissions` (`id`, `user_id`, `permission_id`) VALUES
+(3, 2, 19),
+(4, 2, 20);
 
 -- --------------------------------------------------------
 
@@ -151,14 +160,21 @@ CREATE TABLE IF NOT EXISTS `django_admin_log` (
   `change_message` longtext NOT NULL,
   `content_type_id` int(11) DEFAULT NULL,
   `user_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `django_admin_log`
 --
 
 INSERT INTO `django_admin_log` (`id`, `action_time`, `object_id`, `object_repr`, `action_flag`, `change_message`, `content_type_id`, `user_id`) VALUES
-(1, '2015-11-03 07:42:23.633000', '1', 'Google Cloud Platform', 1, '', 7, 1);
+(1, '2015-11-03 07:42:23.633000', '1', 'Google Cloud Platform', 1, '', 7, 1),
+(2, '2015-11-04 07:40:17.874000', '2', 'test', 1, '', 4, 1),
+(3, '2015-11-04 07:40:49.155000', '2', 'test', 2, 'Changed user_permissions.', 4, 1),
+(4, '2015-11-04 07:41:03.230000', '2', 'test', 2, 'Changed email.', 4, 1),
+(5, '2015-11-04 09:07:38.720000', '4', 'WSGI', 2, 'Changed published_date.', 7, 1),
+(6, '2015-11-04 09:09:35.342000', '5', 'asdf', 1, '', 7, 1),
+(7, '2015-11-04 09:11:41.608000', '5', 'asdf', 3, '', 7, 1),
+(8, '2015-11-04 09:11:47.888000', '4', 'WSGI', 2, 'Changed published_date.', 7, 1);
 
 -- --------------------------------------------------------
 
@@ -227,13 +243,6 @@ CREATE TABLE IF NOT EXISTS `django_session` (
   `expire_date` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `django_session`
---
-
-INSERT INTO `django_session` (`session_key`, `session_data`, `expire_date`) VALUES
-('x9al6baahe1e1o9sik5hz3xkrz9ps4hy', 'MDYyYTg0ZjQ2MGYwYzA0YjhiNDI3NDc0MTg4NjVhMzdhZGFmNjUyMzp7Il9hdXRoX3VzZXJfaGFzaCI6IjJkMTQyMTZmYTVmZGYzODM5MThhMmMzNTUzOTZlZDJmZWIzZjljYjEiLCJfYXV0aF91c2VyX2JhY2tlbmQiOiJkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZCIsIl9hdXRoX3VzZXJfaWQiOiIxIn0=', '2015-11-17 07:39:50.083000');
-
 -- --------------------------------------------------------
 
 --
@@ -247,14 +256,15 @@ CREATE TABLE IF NOT EXISTS `meblog_post` (
   `created_date` datetime(6) NOT NULL,
   `published_date` datetime(6) DEFAULT NULL,
   `author_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `meblog_post`
 --
 
 INSERT INTO `meblog_post` (`id`, `title`, `text`, `created_date`, `published_date`, `author_id`) VALUES
-(1, 'Google Cloud Platform', 'Google Cloud Platform enables developers to build, test and deploy applications on Google''s highly-scalable and reliable infrastructure. Choose from computing, storage and application services for your web, mobile and backend solutions.', '2015-11-03 07:42:06.000000', '2015-11-03 07:42:21.000000', 1);
+(1, 'Google Cloud Platform', 'Google Cloud Platform enables developers to build, test and deploy applications on Google''s highly-scalable and reliable infrastructure. Choose from computing, storage and application services for your web, mobile and backend solutions.', '2015-11-03 07:42:06.000000', '2015-11-03 07:42:21.000000', 1),
+(4, 'WSGI', 'The Web Server Gateway Interface (WSGI) is a specification for simple and universal interface between web servers and web applications or frameworks for the Python programming language. It was originally specified in PEP 333[1] authored by Phillip J. Eby, and published on 7 December 2003. It has since been adopted as a standard for Python web application development. The latest version of the specification is v1.0.1, also known as PEP 3333, published on 26 September 2010.', '2015-11-04 09:06:29.000000', '2015-11-04 09:13:50.690000', 1);
 
 --
 -- Indexes for dumped tables
@@ -363,7 +373,7 @@ ALTER TABLE `auth_permission`
 -- AUTO_INCREMENT for table `auth_user`
 --
 ALTER TABLE `auth_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `auth_user_groups`
 --
@@ -373,12 +383,12 @@ ALTER TABLE `auth_user_groups`
 -- AUTO_INCREMENT for table `auth_user_user_permissions`
 --
 ALTER TABLE `auth_user_user_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `django_admin_log`
 --
 ALTER TABLE `django_admin_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `django_content_type`
 --
@@ -393,7 +403,7 @@ ALTER TABLE `django_migrations`
 -- AUTO_INCREMENT for table `meblog_post`
 --
 ALTER TABLE `meblog_post`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- Constraints for dumped tables
 --
