@@ -67,6 +67,13 @@
                     <li>
                         <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
                     </li>
+                    <li>
+                        <p class="top-menu">Hello {{ user.username }}<small>(<a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a>)</small></p>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{% url 'django.contrib.auth.views.login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
