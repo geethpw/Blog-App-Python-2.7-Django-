@@ -1,6 +1,8 @@
 # MEBLOG
 
-## A Responsive Blog built on Python 2.7/Django
+MEBLOG is a open-source single-user blogapplication built on django 1.8.5.Final.0 and Python 2.7.10
+
+## Notes
 
 Staging database is attached for testing purposes.
 
