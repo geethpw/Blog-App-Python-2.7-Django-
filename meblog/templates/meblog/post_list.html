@@ -17,8 +17,27 @@
                     <hr>
                 {% endfor %}
 
+                <div class="pagination">
+                    <ul class="pagination">
+                        {% if posts.has_previous %}
+                            <li><a href="?page={{ post.previous_page_number }}">First</a></li>
+                        {% endif %}
+                        {% for pg in posts.paginator.page_range %}
+                            {% if posts.number == pg %}
+                                <li class="active"><a href="?page={{ pg }}">{{ pg }}</a></li>
+                            {% else %}
+                                <li><a href="?page={{ pg }}">{{ pg }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if posts.has_next %}
+                            <li><a href="?page={{ post.next_page_number }}">Last</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
             </div>
 
+            
             <!-- Blog Sidebar Widgets Column -->
             {% include "meblog/sidebar.html" %}
             
