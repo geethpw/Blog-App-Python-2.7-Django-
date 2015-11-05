@@ -2,21 +2,18 @@
 
 {% block content %}
     <div class="col-md-12">
-        <h2>
-            <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>
+        <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+
             {% if user.is_authenticated %}
                 {% if post.published_date %}
-                    <p> Published
-                    </p>
+                    <p> {{ post.published_date }}</p>
                 {% else %}
                     <a class="btn btn-default" href="{% url 'meblog.views.post_publish' pk=post.pk %}">Publish</a>
                 {% endif %}
                 <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
             {% endif %}
-        </h2>
         
-            <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                 <hr>
                 <p>{{ post.text|linebreaks }}</p>
         <hr>

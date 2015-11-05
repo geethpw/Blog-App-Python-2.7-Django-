@@ -7,14 +7,16 @@
             <div class="col-md-8">
                 <!-- First Blog Post -->
                 {% for post in posts %}
+                <div class="well">
                     <h2>
                         <a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a>                        
                     </h2>
-                    <p><span class="glyphicon glyphicon-time"></span> {{ post.published_date }}</p>
-                        <img class="img-responsive" src="http://placehold.it/900x300" alt="">
-                            <hr>
-                            <p>{{ post.text|linebreaks }}</p>
+                        <i class="fa fa-calendar"></i> {{ post.published_date }} | <i class="fa fa-user"></i> 
+                   
+                   
+                        <p>{{ post.text|linebreaks|truncatechars:200 }}</p>
                     <hr>
+                </div>
                 {% endfor %}
 
                 <div class="pagination">

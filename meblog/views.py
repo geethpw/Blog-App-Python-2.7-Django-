@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
 
-    paginator = Paginator(posts, 3)
+    paginator = Paginator(posts, 5)
 
     try:
         page = int(request.GET.get('page', '1'))
