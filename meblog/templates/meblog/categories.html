@@ -1,0 +1,58 @@
+{% extends "meblog/base.html" %}
+
+{% block content %}
+    <div class="col-md-12">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>id</th>
+                <th>name</th>
+                <th>Added By</th>
+                {% if user.is_authenticated %}
+                    <th></th>
+                {% endif %}
+              </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+              <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.category_name }}</td>
+                <td>john@example.com</td>
+                {% if user.is_authenticated %}
+                    <td>
+                        <a class="btn btn-default" href="{% url 'category_remove' pk=category.pk %}"><i class="fa fa-trash-o"></i></a>
+                    </td>
+                {% endif %}
+              </tr>
+            {% endfor %}              
+            </tbody>
+          </table>
+            <a class="btn btn-default" data-toggle="modal" data-target="#myModal"><i class="fa fa-plus"></i> Add Category</a>
+            <!-- Modal -->
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Category</h4>
+                  </div>
+                  <div class="modal-body">
+                     <form method="POST" class="categories-form" action="">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                  </div>
+                  <div class="modal-footer">
+                        <button type="submit" class="save btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </form>
+                  </div>
+                </div>
+
+              </div>
+</div>
+            <br/><br/>
+    </div>
+{% endblock %}
