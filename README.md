@@ -1,6 +1,6 @@
 # MEBLOG
 
-MEBLOG is a open-source single-user blogapplication built on django 1.8.5.Final.0 and Python 2.7.10
+MEBLOG is a open-source single-user blog application built on django 1.8.5.0 and Python 2.7.10
 
 ## Notes
 

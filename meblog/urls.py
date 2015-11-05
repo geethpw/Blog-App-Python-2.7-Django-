@@ -9,4 +9,8 @@ urlpatterns = [
 	url(r'^drafts/$', views.post_draft_list, name='post_draft_list'),
 	url(r'^post/(?P<pk>[0-9]+)/publish/$', views.post_publish, name='post_publish'),
 	url(r'^post_remove/(?P<pk>[0-9]+)/$', views.post_remove, name='post_remove'),
+
+	#category urls
+	url(r'^categories/$', views.categories, name='categories'),
+	url(r'^category_remove/(?P<pk>[0-9]+)/$', views.category_remove, name='category_remove'),
 ]
