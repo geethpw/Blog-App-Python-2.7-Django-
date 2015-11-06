@@ -1,0 +1,25 @@
+{% extends "meblog/base.html" %}
+
+{% block content %}
+    <div class="col-md-12">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Post</th>
+                <th>By</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+              <tr>
+                <td><h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4></td>
+                <td>{{ post.author_id }}</td>
+                <td>{{ post.published_date }}</td>
+              </tr>
+            {% endfor %}              
+            </tbody>
+          </table>
+            <br/><br/>
+    </div>
+{% endblock %}

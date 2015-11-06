@@ -6,7 +6,8 @@ MEBLOG is a open-source single-user blog application built on django 1.8.5.0 and
 - login/logout
 - module authentication
 - add/edit/delete blogs
-- Add/delete Categories
+- add/delete Categories
+- responsive
 
 ## Notes
 
