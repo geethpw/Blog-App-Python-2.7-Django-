@@ -112,7 +112,8 @@ def category_remove(reques, pk):
 
 def category_specific(request, pk):
     posts = Post.objects.filter(category_id=pk).order_by('published_date')
-    return render(request, 'meblog/category_specific.html', {'posts': posts})
+    category = Categories.objects.filter(pk=pk)
+    return render(request, 'meblog/category_specific.html', {'posts': posts , 'category': category})
 
 #contact
 def contact(request):
