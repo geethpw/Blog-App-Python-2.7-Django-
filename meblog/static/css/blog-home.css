@@ -18,6 +18,10 @@ footer {
 	font-size: 45px;
 }
 
+.logo-text{
+    font-family: 'Boogaloo', cursive;
+}
+
 .img-circle {
     border-radius: 50%;
 }

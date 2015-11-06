@@ -7,7 +7,7 @@ from django.core.paginator import Paginator
 
 # Posts
 def post_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     categories = Categories.objects.all()
 
     paginator = Paginator(posts, 5)
@@ -36,7 +36,6 @@ def post_new(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
-            post.published_date = timezone.now()
             post.save()
             return redirect('meblog.views.post_detail', pk=post.pk)
     else:
