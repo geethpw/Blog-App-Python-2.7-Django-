@@ -4,12 +4,6 @@ from .models import Post, Categories
 from .forms import PostForm, CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django import template
-from django.contrib.auth.models import User
-
-register = template.Library()
-
-
 
 # Posts
 def post_list(request):
@@ -30,12 +24,7 @@ def post_list(request):
 
     return render(request, 'meblog/post_list.html', {'posts': posts, 'categories': categories,})
     
-@register.simple_tag
-def get_username_from_userid(category_id):
-    try:
-        return Categories.objects.get(id=category_id).category_name
-    except Categories.DoesNotExist:
-        return 'Unknown'
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)

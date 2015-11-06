@@ -14,7 +14,7 @@
                                 </h2>
                             </div>
                             <div class="panel-body">                      
-                                <i class="fa fa-calendar"></i> {{ post.published_date }} | <i class="fa fa-user"></i> {{ post.author.username }} | <i class="fa fa-archive"></i>  {{ post.category.category_name }}
+                                <i class="fa fa-calendar"></i> {{ post.published_date }} | <i class="fa fa-user"></i> {{ post.author.username }} | <i class="fa fa-archive"></i> <a href="{% url 'category_specific' pk=post.category.pk %}">{{ post.category.category_name }}</a> 
                                 <p>{{ post.text|linebreaks|truncatechars:200 }}</p>
                             </div>
                         </div>
