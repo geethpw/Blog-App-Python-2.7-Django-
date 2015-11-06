@@ -43,7 +43,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar navbar-fixed-top" role="navigation"><br/>
+    <nav class="navbar navbar navbar-fixed-top navbar-default" role="navigation"><br/>
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -62,10 +62,10 @@
                         <a href="/">Home</a>
                     </li>
                     <li>
-                        <a href="#">About</a>
+                        <a href="{% url 'about' %}">About</a>
                     </li>
                     <li>
-                        <a href="#">Contact</a>
+                        <a href="{% url 'contact' %}">Contact</a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="dropdown">
@@ -73,7 +73,7 @@
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'post_new' %}" ><span class="glyphicon glyphicon-plus"></span> Add post</a> </li>
                                 <li><a href="{% url 'categories' %}" ><span class="glyphicon glyphicon-edit"></span> CRUD Categories</a> </li>
-                                <li><a href="{% url 'post_draft_list' %}" ><span class="glyphicon glyphicon-edit"></span> Pending</a> </li>
+                                <li><a href="{% url 'post_draft_list' %}" ><i class="fa fa-globe"></i> Publish</a> </li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{% url 'django.contrib.auth.views.logout' %}">Log out</a></li>
                             </ul>

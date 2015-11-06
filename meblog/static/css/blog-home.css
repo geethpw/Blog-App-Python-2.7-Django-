@@ -17,3 +17,20 @@ footer {
 	font-family: 'Boogaloo', cursive;
 	font-size: 45px;
 }
+
+.img-circle {
+    border-radius: 50%;
+}
+.panel {
+     margin-bottom: 0px;
+ }
+.panel-heading {
+    padding: 0px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.panel-body {
+    padding: 15px;
+}

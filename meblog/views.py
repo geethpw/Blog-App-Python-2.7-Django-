@@ -4,6 +4,12 @@ from .models import Post, Categories
 from .forms import PostForm, CategoryForm
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django import template
+from django.contrib.auth.models import User
+
+register = template.Library()
+
+
 
 # Posts
 def post_list(request):
@@ -22,7 +28,14 @@ def post_list(request):
     except(EmptyPage, InvalidPage):
         posts = paginator.page(paginator.num_pages)
 
-    return render(request, 'meblog/post_list.html', {'posts': posts, 'categories': categories})
+    return render(request, 'meblog/post_list.html', {'posts': posts, 'categories': categories,})
+    
+@register.simple_tag
+def get_username_from_userid(category_id):
+    try:
+        return Categories.objects.get(id=category_id).category_name
+    except Categories.DoesNotExist:
+        return 'Unknown'
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -71,7 +84,7 @@ def post_remove(request, pk):
 	post = get_object_or_404(Post, pk=pk)
 	post.delete()
 	return redirect('meblog.views.post_list')
-    
+
 
 # categories
 @login_required
@@ -95,4 +108,13 @@ def category_remove(reques, pk):
     category.delete()
     return redirect('meblog.views.categories')
 
+def category_specific(request, pk):
+    posts = Post.objects.filter(category_id=pk).order_by('published_date')
+    return render(request, 'meblog/category_specific.html', {'posts': posts})
 
+#contact
+def contact(request):
+    return render(request, 'meblog/contact.html')
+#about
+def about(request):
+    return render(request, 'meblog/about.html')

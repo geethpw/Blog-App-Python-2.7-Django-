@@ -4,20 +4,30 @@
 
 <div class="row">
 	<div class="col-md-6">
+		<h2><i class="fa fa-lock"></i> PRIVATE ACCESS ONLY</h2> 
+		<br>
+		 <h4>THIS IS A <b>PRIVATE BLOG.</b> <br>
+		 ONLY <b>OWNER(S)</b> CAN LOG-IN.</h4>
+
+		 <br> 
+		 For more information : <br/>
+		 Contact me : 
+		 <br/>
 	</div>
 	<div class="col-md-6">
 	 	{% if form.errors %}
 		<p>Your username and password didn't match. Please try again.</p>
 		{% endif %}
-
+		<br/>
+		<p>Enter your credentials for administrative accesss. </p>
 		<form method="post" action="{% url 'django.contrib.auth.views.login' %}">
 			{% csrf_token %}
 			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label>
+				<label for="exampleInputEmail1">Username</label> <br/>
 				{{ form.username }}
 			</div>
 			<div class="form-group">
-				<label for="exampleInputPassword1">Password</label>
+				<label for="exampleInputPassword1">Password</label><br/>
 				{{ form.password }}
 			</div>
 
