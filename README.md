@@ -19,6 +19,7 @@ Staging database is attached for testing purposes.
 <hr>
 
 <b>Version 1 </b>
+http://geethpw.github.io/Blog-App-Python-2.7-Django-/
 
 
 
