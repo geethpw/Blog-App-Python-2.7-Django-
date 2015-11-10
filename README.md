@@ -18,7 +18,7 @@ Staging database is attached for testing purposes.
 <b>password :</b> password
 <hr>
 
-<b>Version 1 </b>
+<b>Version 1 </b> <br/>
 http://geethpw.github.io/Blog-App-Python-2.7-Django-/
 
 
